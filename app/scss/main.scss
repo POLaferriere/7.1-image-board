@@ -1,109 +1,195 @@
 @import '../../bower_components/bourbon/app/assets/stylesheets/bourbon';
 @import '../../bower_components/neat/app/assets/stylesheets/neat';
-
 // Typography
 $base-font-family: $helvetica;
-
 // Colors
 $blue: #477dca;
 $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
-$very-light-gray: #fafafa;
+$very-light-gray: #eee;
 $gray-button: #B6B6B6;
 $header: #3B6799;
 $header-button: #062138;
 $add-image: #56AB57;
-
 $base-font-color: $dark-gray;
-$base-background-color: $light-gray;
-
+$base-background-color: $very-light-gray;
 body {
-  background-color: $base-background-color;
-  color: $base-font-color;
-  font-family: $base-font-family;
+    background-color: $base-background-color;
+    color: $base-font-color;
+    font-family: $base-font-family;
 }
 
 //------------CreateView--------------//
-
-
 .create-view {
-  @include outer-container(100%);
-
-  .create-form {
-    @include fill-parent();
-    @include clearfix;
-    background: white;
-    height: 0;
-    overflow: hidden;
-    transition: all 0.5s ease-in-out;
-
-    &.active {
-      height: 300px;
-      overflow: none;
-      transition: all 0.5s ease-in-out;
-    }
-
-    .input-url,
-    .input-caption {
-      @include span-columns(9);
-      @include shift(1.5);
-      border: 1px solid $gray-button;
-    }
-
-    .input-url {
-      margin-top: 50px;
-      line-height: 35px;
-      padding-left: 10px;
-    }
-
-    .input-caption {
-      margin-top: 15px;
-      margin-bottom: 15px;
-      padding: 10px;
-    }
-
-    .create-nav {
-      @include span-columns(4);
-      @include shift(6.5);
-      margin-bottom: 50px;
-      text-align: right;
-
-      > * {
-        border: none;
-        border-radius: 5px;
-        line-height: 60px;
-        text-transform: uppercase;
-        color: white;
-        padding: 0 30px;
-      }
-
-      .create-nav-cancel {
-        background: $gray-button;
-      }
-
-      .create-nav-add {
-        background: $add-image;
-
-        .fa{
-          position: relative;
-          top: 5px;
-          font-size: 40px;
-          margin-right: 10px;
+    @include outer-container(100%);
+    .create-form {
+        @include fill-parent();
+        @include clearfix;
+        background: white;
+        height: 0;
+        overflow: hidden;
+        transition: all 0.5s ease-in-out;
+        &.active {
+            height: 300px;
+            overflow: none;
+            transition: all 0.5s ease-in-out;
         }
-      }
+        .input-url,
+        .input-caption {
+            @include span-columns(9);
+            @include shift(1.5);
+            border: 1px solid $gray-button;
+        }
+        .input-url {
+            margin-top: 50px;
+            line-height: 35px;
+            padding-left: 10px;
+        }
+        .input-caption {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            padding: 10px;
+        }
+        .create-nav {
+            @include span-columns(4);
+            @include shift(6.5);
+            margin-bottom: 50px;
+            text-align: right;
+            > * {
+                border: none;
+                border-radius: 5px;
+                line-height: 60px;
+                text-transform: uppercase;
+                color: white;
+                padding: 0 30px;
+                outline: none;
+            }
+            .create-nav-cancel {
+                background: $gray-button;
+            }
+            .create-nav-add {
+                background: $add-image;
+                .fa {
+                    position: relative;
+                    top: 5px;
+                    font-size: 40px;
+                    margin-right: 10px;
+                }
+            }
+        }
     }
-  }
 }
 
 .header-bar {
-  background: linear-gradient(0deg, #3B6799, #5B98D0);
-  height: 50px;
+    background: linear-gradient(0deg, #3B6799, #5B98D0);
+    height: 50px;
+    i {
+        margin-left: 10%;
+        margin-top: 10px;
+        font-size: 30px;
+    }
+}
 
-  i {
-    margin-left: 10%;
-    margin-top: 10px;
-    font-size: 30px;
+//-------------------Image List-----------------//
+.image-list {
+    @include outer-container();
+    background: $light-gray;
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+//------------------Image Item------------------//
+
+.image-item {
+  @include clearfix();
+  position: relative;
+    .image-container {
+        @include span-columns(11);
+        @include shift(.5);
+        position: relative;
+        .list-image {
+          @include fill-parent();
+        }
+        .fa {
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 50px;
+            height: 0;
+            overflow: hidden;
+            cursor: pointer;
+
+            &:hover {
+              color: rgba(255, 255, 255, 0.7);
+            }
+        }
+        &:hover .fa {
+            height: auto;
+            overflow: auto;
+        }
+    }
+}
+
+.list-caption {
+    @include span-columns(11);
+    @include shift(.5);
+    padding: 40px;
+    background: white;
+    margin-top: 0;
+}
+
+//----------------Edit View----------------//
+
+.edit-view {
+  @include clearfix;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.7);
+
+  .fa {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 50px;
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
   }
 
+  .edit-input-container {
+    position: absolute;
+    left: 100px;
+    right: 100px;
+    top: 50%;
+    text-align: center; 
+    transform: translateY(-50%);
+    background: linear-gradient(0deg, #3B6799, #5B98D0);
+    padding: 40px 0;
+    border-radius: 5px;
+
+    > * {
+      display: block;
+    }
+
+    .edit-url,
+    .edit-caption {
+      width: 90%;
+      margin: 0 5% 20px 5%;
+    }
+
+    .edit-submit {
+      margin-left: 70%;
+      width: 150px;
+      background: $add-image;
+      border: none;
+      color: white;
+      line-height: 40px;
+      border-radius: 5px;
+    }
+  }
 }

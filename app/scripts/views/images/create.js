@@ -13,17 +13,17 @@ var CreateView = BaseView.extend({
     'click .js-create-cancel': 'toggleCreate',
   },
 
-  createImage: function(){
+  createImage: function(e){
+    e.preventDefault();
+    console.log(this.getInfo());
     this.collection.create(this.getInfo());
-    this.$('input').val('');
+    this.$('input, textarea').val('');
   },
 
   getInfo: function(){
     var results = {};
-    var info = this.$el.serializeArray();
-    info.each(function(obj){
-      results[obj.name] = obj.value;
-    })
+    results.url = this.$('input').val();
+    results.caption = this.$('textarea').val();
     return results;
   },
 
