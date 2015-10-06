@@ -14,7 +14,5 @@ $(document).ready(function() {
     var imageList = new ImageListView({
         collection: images,
     });
-    images.on('sync', function() {
-        $('#container').append(imageList.render().el);
-    });
+    $('#container').append(imageList.render().el);
 });

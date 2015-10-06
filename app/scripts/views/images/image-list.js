@@ -3,7 +3,7 @@ import CollectionView from 'views/collection-view';
 
 var ImageListView = CollectionView.extend({
 
-    intialize: function() {
+    initialize: function() {
     	this.listenTo(this.collection, 'add', this.render);
     },
 

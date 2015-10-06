@@ -26,7 +26,6 @@ var EditView = BaseView.extend({
 	updateImage: function(e){
     e.preventDefault();
     this.model.save(this.getInfo());
-    this.collection.add(this.getInfo(), {merge: true});
     this.remove();
   },
 
