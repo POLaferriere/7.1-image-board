@@ -1,4 +1,11 @@
+import ImageCollection from 'models/image-collection';
+import CreateView from 'views/images/create';
+
 $(document).ready(function(){
-  // prepend the contents of `app/templates/application.hbs` into `body`
-  $('#container').append(JST.application());
+  var images = new ImageCollection();
+
+  var createView = new CreateView({
+    collection: images,
+  });
+  $('#container').append(createView.render().el);
 });
