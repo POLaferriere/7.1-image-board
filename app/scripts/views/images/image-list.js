@@ -3,15 +3,12 @@ import CollectionView from 'views/collection-view';
 
 var ImageListView = CollectionView.extend({
 
-    initialize: function() {
-    	this.listenTo(this.collection, 'add', this.render);
-    },
-
     tagName: 'ul',
 
     className: 'image-list',
 
     render: function() {
+    	this.$el.html('')
         this.renderChildren();
         return this;
 

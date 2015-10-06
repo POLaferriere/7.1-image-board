@@ -13,7 +13,8 @@ var ImageItemView = ModelView.extend({
 	template: JST['image'],
 
 	events: {
-		'click .fa-pencil-square': 'renderEdit'
+		'click .fa-pencil-square': 'renderEdit',
+		'click .fa-trash-o': 'delete',
 	},
 
 	renderEdit: function(){
@@ -22,6 +23,12 @@ var ImageItemView = ModelView.extend({
 			model: this.model,
 		});
 		this.$el.append(editView.render().el);
+	},
+
+	delete: function() {
+		this.model.destroy({success: () => {
+			this.remove();
+		}});
 	}
 
 });
