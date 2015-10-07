@@ -16,8 +16,6 @@ $add-image: #56AB57;
 $base-font-color: $dark-gray;
 $base-background-color: $very-light-gray;
 $mobile: new-breakpoint(max-width 990px);
-
-
 body {
     background-color: $base-background-color;
     color: $base-font-color;
@@ -104,7 +102,7 @@ body {
     list-style: none;
     padding: 0;
     @include media($mobile) {
-      @include outer-container($mobile);
+        @include outer-container($mobile);
     }
 }
 
@@ -118,45 +116,53 @@ body {
         @include shift(.5);
         position: relative;
         @include media($mobile) {
-          @include fill-parent();
-          @include shift(0);
+            @include fill-parent();
+            @include shift(0);
         }
         .list-image {
             @include fill-parent();
         }
-        .fa-pencil-square {
+        .fa {
             position: absolute;
-            top: 40px;
-            right: 100px;
             color: rgba(255, 255, 255, 0.3);
             font-size: 50px;
-            height: 0;
-            overflow: hidden;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .fa-pencil-square {
+            top: 40px;
+            right: 100px;
             cursor: pointer;
             &:hover {
                 color: rgba(255, 255, 255, 0.7);
             }
         }
         .fa-trash-o {
-            position: absolute;
             top: 40px;
             right: 40px;
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 50px;
-            height: 0;
-            overflow: hidden;
             cursor: pointer;
             &:hover {
-              color: rgba(210, 56, 45, 1)
+                color: rgba(210, 56, 45, 1)
+            }
+        }
+        .fa-arrows-alt {
+            top: 50%;
+            left: 50%;
+            color: rgba(255, 255, 255, 0.3);
+            transform: transition(-50% -50%);
+            &:hover {
+                color: rgba(255, 255, 255, 0.9);
+                transform: scale(1.5, 1.5);
+                transition: 0.5 ease-in-out;
             }
         }
         &:hover .fa {
-            height: auto;
-            overflow: auto;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
         }
     }
     @include media($mobile) {
-      @include fill-parent();
+        @include fill-parent();
     }
 }
 
@@ -166,10 +172,9 @@ body {
     padding: 40px;
     background: white;
     margin-top: 0;
-
     @include media($mobile) {
-      @include fill-parent();
-      @include shift(0);
+        @include fill-parent();
+        @include shift(0);
     }
 }
 
@@ -219,5 +224,20 @@ body {
             line-height: 40px;
             border-radius: 5px;
         }
+    }
+}
+
+//--------------Image Zoom---------------//
+.image-zoom {
+    @include outer-container(100%);
+    img {
+        @include fill-parent();
+    }
+    .fa {
+        position: absolute;
+        top: 100px;
+        left: 100px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 80px;
     }
 }
