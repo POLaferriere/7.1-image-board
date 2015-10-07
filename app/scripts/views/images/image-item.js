@@ -2,34 +2,34 @@ import ModelView from 'views/model-view';
 import EditView from 'views/images/edit-view';
 
 var ImageItemView = ModelView.extend({
-	initialize: function(){
-		this.listenTo(this.model, 'change', this.render);
-	},
+    initialize: function() {
+        // this.listenTo(this.model, 'change', this.render);
+    },
 
-	tagName: 'li',
+    tagName: 'li',
 
-	className: 'image-item',
-	
-	template: JST['image'],
+    className: 'image-item',
 
-	events: {
-		'click .fa-pencil-square': 'renderEdit',
-		'click .fa-trash-o': 'delete',
-	},
+    template: JST['image'],
 
-	renderEdit: function(){
-		var editView = new EditView({
-			collection: this.collection,
-			model: this.model,
-		});
-		this.$el.append(editView.render().el);
-	},
+    events: {
+        'click .fa-pencil-square': 'renderEdit',
+        'click .fa-trash-o': 'delete',
+    },
 
-	delete: function() {
-		this.model.destroy({success: () => {
-			this.remove();
-		}});
-	}
+    renderEdit: function() {
+        var editView = new EditView({
+            collection: this.collection,
+            model: this.model,
+        });
+        this.$el.append(editView.render().el);
+    },
+
+    delete: function() {
+    	debugger;
+        this.model.destroy();
+        this.remove();
+    }
 
 });
 
